@@ -1,4 +1,4 @@
-# HCDecryptor-tg
+# HCDrill - Telegram version
 Telegram bot for decrypt HTTP Custom configurations on Telegram
 
 # Install instructions
