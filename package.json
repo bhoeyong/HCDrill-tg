@@ -1,6 +1,6 @@
 {
-  "name": "hcdecryptor-tg",
-  "version": "0.0.1",
+  "name": "hcdrill-tg",
+  "version": "1.0.0",
   "description": "A bot, duh",
   "main": "index.js",
   "scripts": {
