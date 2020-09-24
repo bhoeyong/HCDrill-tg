@@ -1,5 +1,5 @@
 /*
-* HCDrill - Telegram version
+* HCDrill v1.0.0 - Telegram version
 * Coded by PANCHO7532 - P7COMunications LLC
 * Copyright (c) HCTools Group - 2020
 *
