@@ -11,7 +11,7 @@ const util = require("util");
 const syncRequest = require('sync-request');
 var botToken = "your_bot_token_here";
 var cleanFiles = true;
-const downloadDirectory = "storage/"; //for store incoming files
+var downloadDirectory = "storage/"; //for store incoming files
 var showHelp = false;
 const validExtensions = [
     ".acm",
@@ -134,8 +134,9 @@ bot.on("message", function(message) {
             response+="\r\n(RAW Value)-> " + decryptedContent["raw"];
         }
         if(response.length > 4095) {
-            bot.sendMessage(message.chat.id, response.substring(0, Math.round(response.length/2)), {reply_to_message_id: message.message_id});
-            bot.sendMessage(message.chat.id, response.substring(Math.round(response.length/2), response.length), {reply_to_message_id: message.message_id});
+            bot.sendMessage(message.chat.id, response.substring(0, Math.round(response.length/2)), {reply_to_message_id: message.message_id}).then(function(){
+                bot.sendMessage(message.chat.id, response.substring(Math.round(response.length/2), response.length), {reply_to_message_id: message.message_id});
+            });
         } else {
             bot.sendMessage(message.chat.id, response, {reply_to_message_id: message.message_id});
         }
