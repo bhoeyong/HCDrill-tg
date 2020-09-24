@@ -9,10 +9,37 @@ const fs = require('fs');
 const path = require('path');
 const util = require("util");
 const syncRequest = require('sync-request');
-const apiTelegram = require('node-telegram-bot-api');
-const botToken = "your_bot_token_here";
-const bot = new apiTelegram(botToken, {polling: true});
+var botToken = "your_bot_token_here";
 const downloadDirectory = "storage/"; //for store incoming files
+var showHelp = false;
+//splash
+console.log("HCDrill v1.0\r\nCopyright (c) HCTools Group - 2020\r\nCoded by P7COMunications LLC");
+for(c = 0; c < process.argv.length; c++) {
+    switch(process.argv[c]) {
+        case "--botToken":
+        case "-bt":
+            botToken = process.argv[c+1];
+            break;
+        case "--help":
+        case "-h":
+            showHelp = true;
+            break;
+    }
+}
+if(showHelp) {
+    var helpContent = [
+        "Usage: node script.js [--args -a...]",
+        "",
+        "--botToken, -bt\t\tSet your bot token",
+        "--help, -h\t\tDisplay this help text"
+    ];
+    for(c=0; c < helpContent.length; c++) {
+        console.log(helpContent[c]);
+    }
+    process.exit();
+}
+const apiTelegram = require('node-telegram-bot-api');
+const bot = new apiTelegram(botToken, {polling: true});
 function fileDownload(url) {
     //this will return the filename of the file saved
     var request = syncRequest("GET", url);
