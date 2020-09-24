@@ -1,9 +1,9 @@
 # HCDrill - Telegram version
-Telegram bot for decrypt HTTP Custom configurations on Telegram
+Telegram bot for on-demand HTTP Custom configuration file decryptions
 
-# Install instructions
+# Installation instructions
 - Download Node.JS [Download Here](https://nodejs.org/en/download/ "Node.JS Download")
-- Once installed Node.JS, execute "install-dep" .sh/.bat script depending on your platform, or...
+- Once installed, execute "install-dep" .sh/.bat script depending on your platform, or...
 - ... execute `npm update --save` in the same folder as the script.
 
 # Usage
