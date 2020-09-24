@@ -45,6 +45,8 @@ if(showHelp) {
         "Usage: node script.js [--args -a...]",
         "",
         "--botToken, -bt\t\tSet your bot token",
+        "--dir, -d\t\tSet a custom download dir for incoming files",
+        "--conserve, -c\t\tConserve uploaded files",
         "--help, -h\t\tDisplay this help text"
     ];
     for(c=0; c < helpContent.length; c++) {
@@ -99,7 +101,7 @@ bot.on("message", function(message) {
         }
         var localApiResult = JSON.parse(require("./lib/httpCustom").decrypt(fs.readFileSync(downloadDirectory + localFilePath)));
         if(localApiResult["error"] == 1) {
-            bot.sendMessage(message.chat.id, "Decryption failed, incompatible encryption method or algorithm.");
+            bot.sendMessage(message.chat.id, "Decryption failed, incompatible encryption method or algorithm.", {reply_to_message_id: message.message_id});
             if(cleanFiles) {
                 fs.unlinkSync(downloadDirectory + localFilePath);
             }
