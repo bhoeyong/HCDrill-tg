@@ -10,6 +10,7 @@ const path = require('path');
 const util = require("util");
 const syncRequest = require('sync-request');
 var botToken = "your_bot_token_here";
+var cleanFiles = false;
 const downloadDirectory = "storage/"; //for store incoming files
 var showHelp = false;
 //splash
@@ -19,6 +20,14 @@ for(c = 0; c < process.argv.length; c++) {
         case "--botToken":
         case "-bt":
             botToken = process.argv[c+1];
+            break;
+        case "--dir":
+        case "-d":
+            downloadDirectory = process.argv[c+1];
+            break;
+        case "--conserve":
+        case "-c":
+            cleanFiles = true;
             break;
         case "--help":
         case "-h":
@@ -107,7 +116,12 @@ bot.on("message", function(message) {
             if(message.caption.indexOf("raw") != -1) {
                 response+="\r\n(RAW Value)-> " + decryptedContent["raw"];
             }
-            bot.sendMessage(message.chat.id, response, {reply_to_message_id: message.message_id});
+            if(response.length > 4095) {
+                bot.sendMessage(message.chat.id, response.substring(0, Math.round(response.length/2)), {reply_to_message_id: message.message_id});
+                bot.sendMessage(message.chat.id, response.substring(Math.round(response.length/2), response.length), {reply_to_message_id: message.message_id});
+            } else {
+                bot.sendMessage(message.chat.id, response, {reply_to_message_id: message.message_id});
+            }
             //deleting file so we dont acumulate a lot of files on the download directory
             fs.unlinkSync(downloadDirectory + localFilePath);
         });
