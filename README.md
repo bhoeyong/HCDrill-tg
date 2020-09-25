@@ -7,7 +7,7 @@ Telegram bot for on-demand HTTP Custom configuration file decryptions
 - ... execute `npm update --save` in the same folder as the script.
 
 # Usage
-This script supports arguments to avoid editing the filw and exposing your Telegram bot token. Instead, you need to pass it as an argument at each bot startup, like so:
+This script supports arguments to avoid editing the file and exposing your Telegram bot token. Instead, you need to pass it as an argument at each bot startup, like so:
 
 `node index.js -bt (your bot token)`
 
