@@ -138,7 +138,6 @@ bot.on("message", function(message) {
         if(!!message.caption && message.caption.indexOf("json") != -1) {
             response = JSON.stringify(decryptedContent);
         }
-        console.log(response.length);
         if(response.length > 4096) {
             if(response.length < 8192) {
                 //it's under THAT two message limit
