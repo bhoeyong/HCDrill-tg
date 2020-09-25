@@ -147,7 +147,7 @@ bot.on("message", function(message) {
                 });
             } else {
                 //we cant afford a two message split with this length, so, for avoid spam, we send it as a document instead.
-                bot.sendDocument(message.chat.id, Buffer.from(response), {caption: "The decrypted content is too large to be sent on Telegram, instead, we will sent you an .txt with the decrypted data.", reply_to_message_id: message.message_id}, {filename: message.from.id + "_" + response.length + Math.round(Math.random()*1000) + ".txt", contentType: "application/octet-stream"});
+                bot.sendDocument(message.chat.id, Buffer.from(response), {caption: "The decrypted content is too large to be sent on Telegram. Instead we sent you a text file with the decrypted data.", reply_to_message_id: message.message_id}, {filename: message.from.id + "_" + response.length + Math.round(Math.random()*1000) + ".txt", contentType: "application/octet-stream"});
             }
         } else {
             bot.sendMessage(message.chat.id, response, {reply_to_message_id: message.message_id});
