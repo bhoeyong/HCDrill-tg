@@ -7,20 +7,18 @@ Telegram bot for on-demand HTTP Custom configuration file decryptions
 - ... execute `npm update --save` in the same folder as the script.
 
 # Usage
-This script supports arguments to avoid editing the file to insert your Telegram Bot token.
-Execute by doing:
+This script supports arguments to avoid editing the filw and exposing your Telegram bot token. Instead, you need to pass it as an argument at each bot startup, like so:
 
-`node index.js -bt (your bot token here)`
+`node index.js -bt (your bot token)`
 
-And the bot will use the token stored in the argument.
 
-You can also customize the "storage" folder, (where the files from Telegram will be downloaded) using the -d argument
+You can also change the "storage" folder, (where the files from Telegram will be downloaded) using the -d argument
 
 `node index.js -bt (your bot token here) -d (physical path where the incoming files should be stored)`
 
-The bot automatically deletes every incoming files at the end of each decryption call once the final data is returned.
+The bot automatically deletes incoming files at the end of each decryption call once the final data is returned.
 
-If for some reason you want to conserve the files, you can pass the -c argument and the bot will not delete every downloaded file. Example:
+If for some reason you want to keep the files, you can pass the -c argument and the bot will avoid deleting every downloaded file.
 
 `node index.js -bt (your token) -d (temp dir path) -c`
 
