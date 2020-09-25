@@ -1,6 +1,6 @@
 {
   "name": "hcdrill-tg",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A bot, duh",
   "main": "index.js",
   "scripts": {
